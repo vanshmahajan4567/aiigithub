@@ -1,8 +1,9 @@
+fastapi==0.109.0
+uvicorn==0.25.0
+pydantic==2.5.3
 PyGithub==2.1.1
-pandas==2.1.4
-python-dotenv==1.0.0
-streamlit==1.29.0
-beautifulsoup4==4.12.2
-requests==2.31.0
 selenium==4.16.0
+beautifulsoup4==4.12.2
+python-dotenv==1.0.0
+requests==2.31.0
 webdriver-manager==4.0.1 

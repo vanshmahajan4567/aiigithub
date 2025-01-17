@@ -14,34 +14,65 @@ An AI-powered tool that helps you find the perfect candidates on GitHub based on
   - Bio
   - GitHub activity
 
-## Setup
+## Local Development
 
 1. Clone this repository
-2. Install dependencies:
+2. Install backend dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Create a `.env` file with your API keys:
+3. Install frontend dependencies:
+```bash
+cd frontend
+npm install
+```
+
+4. Create a `.env` file with your GitHub token:
 ```
 GITHUB_TOKEN=your_github_token
-OPENAI_API_KEY=your_openai_api_key
 ```
 
-## Usage
-
-Run the Streamlit app:
+5. Run the backend:
 ```bash
-streamlit run github_scraper.py
+uvicorn api.main:app --reload
 ```
 
-Then:
-1. Enter your requirements in natural language (e.g., "I want an AI engineer from San Francisco")
-2. Click "SEARCH"
-3. View the ranked list of candidates with detailed profiles
+6. Run the frontend:
+```bash
+cd frontend
+npm run dev
+```
+
+## Deployment to Vercel
+
+1. Install Vercel CLI:
+```bash
+npm install -g vercel
+```
+
+2. Login to Vercel:
+```bash
+vercel login
+```
+
+3. Add your GitHub token to Vercel:
+```bash
+vercel secrets add github_token your_github_token
+```
+
+4. Deploy to Vercel:
+```bash
+vercel
+```
+
+5. For production deployment:
+```bash
+vercel --prod
+```
 
 ## Notes
 
 - GitHub API has rate limits. For better results, use an authenticated token
-- The tool uses GPT-4 for candidate analysis, ensure you have appropriate OpenAI API access
-- Previous searches are saved locally in `previous_searches.json` 
+- The tool uses Selenium for scraping additional GitHub data
+- Make sure to set up the GitHub token in your Vercel environment variables 
